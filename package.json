@@ -1,0 +1,29 @@
+{
+  "name": "myclockerapi",
+  "version": "1.0.0",
+  "description": "Bac Api of the project MyClocker",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iti98/MyClockerApi.git"
+  },
+  "keywords": [
+    "clocker"
+  ],
+  "author": "Etiene TORGUE, Axel IBO, Alex MOULINNEUF",
+  "license": "MIT License",
+  "bugs": {
+    "url": "https://github.com/iti98/MyClockerApi/issues"
+  },
+  "homepage": "https://github.com/iti98/MyClockerApi#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.7.2"
+  }
+}
