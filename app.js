@@ -5,6 +5,7 @@ var cors = require('cors');
 
 
 const userRoute = require("./api/routes/userRoute");
+const userGroupRoute = require('./api/routes/userGroupRoute');
 
 
 const hostname = '0.0.0.0';
@@ -21,6 +22,7 @@ server.use(express.json());
 server.use(cors()); 
 
 userRoute(server);
+userGroupRoute(server);
 
 
 server.listen(port, hostname);
