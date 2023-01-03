@@ -8,7 +8,7 @@ let userGroupSchema = new Schema({
         required: true,
         unique: true
     },
-    user_group: [
+    user_group:[
         {
             type: String,
         }
@@ -16,7 +16,6 @@ let userGroupSchema = new Schema({
     created_by: {
         type: String,
         required: true,
-
     },
 });
 

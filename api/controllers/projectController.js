@@ -1,27 +1,27 @@
 const jwt = require("jsonwebtoken");
-const Group = require('../models/userGroupModel')
+const Projet = require('../models/projectModel')
 
 
-//Création et enregistrement un nouveau group
+//Création et enregistrement un nouveau projet
 exports.create = (req, res) => {
+
   // Validate request
   if (!req.body.name) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
-  //Create a Group
-  const groupe = new Group({
+  //Create a project
+  const projet = new Projet({
     name: req.body.name,
-    user_group: [
-      req.body.currentUser
-    ],
+    date: new Date(),
+    description: req.body.description,
     created_by: req.body.currentUser
   });
 
-  // Save Group in the database
-  groupe
-    .save(groupe)
+  // Save project in the database
+  projet
+    .save(projet)
     .then(data => {
       res.send(data);
     })
@@ -33,38 +33,37 @@ exports.create = (req, res) => {
     });
 };
 
-//Récupère tous les groups/ recherche dans la base de données
+//Récupère tous les projets/ recherche dans la base de données
 exports.findAll = (req, res) => {
-  // const name = req.query.name;
-  // var condition = name ? { name: { $regex: new RegExp(name), $options: "i" } } : {};
+ 
   console.log("findAll")
-  Group.find()
+  Projet.find()
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving group."
+          err.message || "Some error occurred while retrieving project."
       });
     });
 };
 
 
-//Trouver un seul group en fonction de son id
+//Trouver un seul projet en fonction de son id
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Group.findById(id)
+  Projet.findById(id)
     .then(data => {
       if (!data)
-        res.status(404).send({ message: "Not found Group with id " + id });
+        res.status(404).send({ message: "Not found project with id " + id });
       else res.send(data);
     })
     .catch(err => {
       res
         .status(500)
-        .send({ message: "Error retrieving Group with id=" + id });
+        .send({ message: "Error retrieving project with id=" + id });
     });
 };
 
@@ -109,11 +108,11 @@ exports.update = (req, res) => {
 }
 
 
-//Supprimer un group en fonction de son id
+//Supprimer un projet en fonction de son id
 exports.deleteOne = (req, res) => {
   const id = req.params.id;
 
-  Group.findByIdAndRemove(id)
+  Projet.findByIdAndRemove(id)
     .then(data => {
       if (!data) {
         res.status(404).send({
@@ -132,18 +131,18 @@ exports.deleteOne = (req, res) => {
     });
 };
 
-//Supprimer tous les groups
+//Supprime tous les projets
 exports.deleteAll = (req, res) => {
-  Group.deleteMany({})
+  Projet.deleteMany({})
     .then(data => {
       res.send({
-        message: `${data.deletedCount} Group were deleted successfully!`
+        message: `${data.deletedCount} Project were deleted successfully!`
       });
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while removing all Group."
+          err.message || "Some error occurred while removing all project."
       });
     });
 };

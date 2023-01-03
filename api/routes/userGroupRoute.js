@@ -1,14 +1,14 @@
 module.exports = (server) => {
     const groupController = require("../controllers/userGroupController");
-  
-    // Create a new Group
-    server.post("/group", groupController.create);
-  
+
     // Retrieve all group
     server.get("/groups", groupController.findAll);
   
     // Retrieve a single group with id
     server.get("/group/:id", groupController.findOne);
+  
+    // Create a new Group
+    server.post("/group", groupController.create);
   
     // Update a group with id
     server.put("/group/:id", groupController.update);
@@ -18,5 +18,4 @@ module.exports = (server) => {
   
     // Delete all group
     // server.delete("/", groupController.deleteAll);
-
   };
