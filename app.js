@@ -14,7 +14,11 @@ const port = 3000;
 const server = express();
 
 // mongoose.connect(process.env.MongoDB); // Sans docker
-mongoose.connect(process.env.MongoDB); // Sans docker
+mongoose.connect(process.env.MongoDB).then((res) => {
+    console.log("Connected");
+}).catch((error) => {
+    console.log("Erreur : ", error);
+}) // Sans docker
 
 server.use(express.urlencoded());
 server.use(express.json());

@@ -1,22 +1,22 @@
 module.exports = (server) => {
-    const group = require("../controllers/userGroupController");
+    const groupController = require("../controllers/userGroupController");
   
     // Create a new Group
-    server.post("/", group.create);
+    server.post("/group", groupController.create);
   
     // Retrieve all group
-    server.get("/group", group.findAll);
+    server.get("/groups", groupController.findAll);
   
     // Retrieve a single group with id
-    server.get("/groud/:id", group.findOne);
+    server.get("/group/:id", groupController.findOne);
   
     // Update a group with id
-    server.put("/groud/:id", group.update);
+    server.put("/group/:id", groupController.update);
   
     // Delete a group with id
-    server.delete("groud/:id", group.delete);
+    server.delete("/group/:id", groupController.deleteOne);
   
     // Delete all group
-    server.delete("/", group.deleteAll);
+    // server.delete("/", groupController.deleteAll);
 
   };
