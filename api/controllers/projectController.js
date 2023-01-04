@@ -1,7 +1,6 @@
 const jwt = require("jsonwebtoken");
 const Projet = require('../models/projectModel')
 
-
 //Création et enregistrement un nouveau projet
 exports.create = (req, res) => {
 
@@ -28,7 +27,7 @@ exports.create = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Group."
+          err.message || "Some error occurred while creating the Project."
       });
     });
 };
@@ -68,7 +67,7 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  Group.findOneAndUpdate(req.params.id, req.body, { new: true }, (error, post) => {
+  Projet.findOneAndUpdate(req.params.id, req.body, { new: true }, (error, post) => {
     if (error) {
       console.log(error);
       res.status(401)
@@ -90,17 +89,17 @@ exports.deleteOne = (req, res) => {
     .then(data => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot delete Group with id=${id}. Maybe this group was not found!`
+          message: `Cannot delete Project with id=${id}. Maybe this project was not found!`
         });
       } else {
         res.send({
-          message: "Group was deleted successfully!"
+          message: "project was deleted successfully!"
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete Group with id=" + id
+        message: "Could not delete Project with id=" + id
       });
     });
 };
