@@ -4,7 +4,7 @@ const projectModel = require('./projectModel');
 const Schema = mongoose.Schema;
 
 let timeModelSchema = new Schema({
-  
+
     time: {
         type: timeStamp,
         required: false

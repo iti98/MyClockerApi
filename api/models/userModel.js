@@ -13,7 +13,7 @@ let userSchema = new Schema({
     },
 
     /******************/
-    
+
     firstname: {
         type: String,
         required: true,

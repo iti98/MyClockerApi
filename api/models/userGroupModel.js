@@ -8,7 +8,7 @@ let userGroupSchema = new Schema({
         required: true,
         unique: true
     },
-    user_group:[
+    user_group: [
         {
             type: String,
         }

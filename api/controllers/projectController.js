@@ -35,7 +35,7 @@ exports.create = (req, res) => {
 
 //Récupère tous les projets/ recherche dans la base de données
 exports.findAll = (req, res) => {
- 
+
   console.log("findAll")
   Projet.find()
     .then(data => {
@@ -67,43 +67,17 @@ exports.findOne = (req, res) => {
     });
 };
 
-//Mettez à jour un group en fonction de son id
-// exports.update = (req, res) => {
-//   if (!req.body) {
-//     return res.status(400).send({
-//       message: "Data to update can not be empty!"
-//     });
-//   }
-
-//   const id = req.params.id;
-
-//   Group.findByIdAndUpdate(id, req.body, { new: true })
-//     .then(data => {
-//       if (!data) {
-//         res.status(404).send({
-//           message: `Cannot update Group with id=${id}. Maybe Group was not found!`
-//         });
-//       } else {
-//         res.send({ message: "Group was updated successfully." });
-//       }
-//     })
-//     .catch(err => {
-//       res.status(500).send({
-//         message: "Error updating Group with id=" + id
-//       });
-//     });
-// };
 exports.update = (req, res) => {
   Group.findOneAndUpdate(req.params.id, req.body, { new: true }, (error, post) => {
-      if (error) {
-          console.log(error);
-          res.status(401)
-              .json({ message: "Reqûete invalide." });
-      }
-      else {
-          res.status(200)
-              .json(post);
-      }
+    if (error) {
+      console.log(error);
+      res.status(401)
+        .json({ message: "Reqûete invalide." });
+    }
+    else {
+      res.status(200)
+        .json(post);
+    }
   });
 }
 

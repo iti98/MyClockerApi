@@ -96,15 +96,15 @@ exports.findOne = (req, res) => {
 // };
 exports.update = (req, res) => {
   Group.findOneAndUpdate(req.params.id, req.body, { new: true }, (error, post) => {
-      if (error) {
-          console.log(error);
-          res.status(401)
-              .json({ message: "Reqûete invalide." });
-      }
-      else {
-          res.status(200)
-              .json(post);
-      }
+    if (error) {
+      console.log(error);
+      res.status(401)
+        .json({ message: "Reqûete invalide." });
+    }
+    else {
+      res.status(200)
+        .json(post);
+    }
   });
 }
 
